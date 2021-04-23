@@ -1,0 +1,77 @@
+//
+//  ProductCell.swift
+//  BBProject
+//
+//  Created by IOS DEV02 on 23/04/2021.
+//  Copyright © 2021 QTCTEK COMP. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+class ProductCell:  BaseCollectionCell {
+    override func initialize() {
+        setUpViewItem()
+        setUpImvProduct()
+        setUpNameProduct()
+    }
+    
+    var viewItem: UIView =  {
+       let viewItem = UIView()
+        viewItem.layer.borderWidth = 1
+        viewItem.layer.borderColor = UIColor.gray.withAlphaComponent(0.3).cgColor
+        viewItem.layer.cornerRadius = 5
+        return viewItem
+    }()
+    
+    func setUpViewItem() {
+        addSubview(viewItem)
+        viewItem.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.width.equalTo(Dimension.shared.width_screen / 2)
+            make.height.equalTo(200)
+        }
+    }
+    
+    var imvProduct: UIImageView = {
+        let imvProduct = UIImageView()
+        imvProduct.layer.cornerRadius = 50
+        return imvProduct
+    }()
+    
+    func setUpImvProduct() {
+        viewItem.addSubview(imvProduct)
+        imvProduct.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.width.equalTo(100)
+            make.height.equalTo(100)
+        }
+    }
+    
+    var tvNameProduct: UILabel = {
+        let tvNameProduct = UILabel()
+        tvNameProduct.textColor = .black
+        tvNameProduct.textAlignment = .center
+        tvNameProduct.font = .systemFont(ofSize: 16)
+        return tvNameProduct
+    }()
+    
+    func setUpNameProduct() {
+        viewItem.addSubview(tvNameProduct)
+        tvNameProduct.snp.makeConstraints { (make) in
+            make.top.equalTo(imvProduct.snp.bottom).offset(20)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+    }
+    
+    func displayCell(customer: ProductModel){
+        tvNameProduct.text = customer.productName
+        imvProduct.displayImgPhoto(urlPhoto: customer.productImage, photo_default: Resource.Images.shared.photoDefault)
+    }
+}
