@@ -23,6 +23,8 @@
 		C386783F262D690300240E52 /* CellEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C386783E262D690300240E52 /* CellEmpty.swift */; };
 		C394067C262EBC6700872DCC /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C394067B262EBC6700872DCC /* DetailController.swift */; };
 		C397FD89263134B1008424AD /* CellMusicColectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C397FD88263134B1008424AD /* CellMusicColectionView.swift */; };
+		C3A3F8F42633B452008C2C7B /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3F8F32633B452008C2C7B /* TestController.swift */; };
+		C3A3F8F72633C0AA008C2C7B /* ProductDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3F8F62633C0AA008C2C7B /* ProductDetailController.swift */; };
 		C3E8004F228A572D0019D195 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E8004E228A572D0019D195 /* AppDelegate.swift */; };
 		C3E80051228A572D0019D195 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E80050228A572D0019D195 /* ViewController.swift */; };
 		C3E80054228A572E0019D195 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E80052228A572E0019D195 /* Main.storyboard */; };
@@ -68,6 +70,8 @@
 		C386783E262D690300240E52 /* CellEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellEmpty.swift; sourceTree = "<group>"; };
 		C394067B262EBC6700872DCC /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		C397FD88263134B1008424AD /* CellMusicColectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellMusicColectionView.swift; sourceTree = "<group>"; };
+		C3A3F8F32633B452008C2C7B /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
+		C3A3F8F62633C0AA008C2C7B /* ProductDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailController.swift; sourceTree = "<group>"; };
 		C3E8004B228A572D0019D195 /* BBProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BBProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E8004E228A572D0019D195 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3E80050228A572D0019D195 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				C3763427263255D60013C881 /* DashBoardController.swift */,
+				C3A3F8F62633C0AA008C2C7B /* ProductDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				C3E80055228A572E0019D195 /* BBProject.xcdatamodeld */,
 				C3E80074228A68C80019D195 /* API.swift */,
 				C394067B262EBC6700872DCC /* DetailController.swift */,
+				C3A3F8F32633B452008C2C7B /* TestController.swift */,
 			);
 			path = Supports;
 			sourceTree = "<group>";
@@ -459,6 +465,7 @@
 				C3E80051228A572D0019D195 /* ViewController.swift in Sources */,
 				C3744A8925637395007F66CB /* PopUpTwoAction.swift in Sources */,
 				C376345F2632AF6E0013C881 /* CellColectionViewCateogory.swift in Sources */,
+				C3A3F8F42633B452008C2C7B /* TestController.swift in Sources */,
 				C397FD89263134B1008424AD /* CellMusicColectionView.swift in Sources */,
 				C3E80079228A6C810019D195 /* HandleUI.swift in Sources */,
 				C3E8007B228A6CED0019D195 /* FormatCurrency.swift in Sources */,
@@ -485,6 +492,7 @@
 				C3E80089228A70520019D195 /* BaseMenu.swift in Sources */,
 				C3E8004F228A572D0019D195 /* AppDelegate.swift in Sources */,
 				C3763432263260180013C881 /* CategoryModel.swift in Sources */,
+				C3A3F8F72633C0AA008C2C7B /* ProductDetailController.swift in Sources */,
 				C3E80091228A71980019D195 /* CellDefault.swift in Sources */,
 				C386783C262D638F00240E52 /* CellCustomerManager.swift in Sources */,
 				C37634362632689A0013C881 /* CategoryCell.swift in Sources */,

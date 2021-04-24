@@ -31,11 +31,13 @@ class DashBoardController: UIViewController {
     }
     
     @objc func getCategoryId(_ idCategory: Notification){
-        guard let result: String = idCategory.object as? String else {
+        guard let result: [String: AnyObject] = idCategory.object as? [String: AnyObject] else {
             return
         }
-        print(result)
-        getListProduct(idCategory: result)
+        let id = result["id"] as? Int ?? 0
+        arrCategory = result["arr"] as? [CategoryModel] ?? []
+        arrProduct = []
+        getListProduct(idCategory: id)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +52,7 @@ class DashBoardController: UIViewController {
     
     
     var searchView: SearchView = {
-       let searchView = SearchView()
+        let searchView = SearchView()
         return searchView
     }()
     
@@ -82,48 +84,52 @@ class DashBoardController: UIViewController {
     }
     
     lazy var colect : BaseCollectionView = {
-         let layout = UICollectionViewFlowLayout()
-         let colect = BaseCollectionView(frame: .zero, collectionViewLayout: layout)
-         colect.register(ProductCell.self, forCellWithReuseIdentifier: "ProductCell")
-         colect.register(CellColectionViewCateogory.self, forCellWithReuseIdentifier: "CellColectionViewCateogory")
-         colect.delegate = self
-         colect.dataSource = self
-         colect.backgroundColor = .white
-         layout.scrollDirection = .vertical
-     
-         return colect
-     }()
-
-     func setUpColectView() {
-         view.addSubview(colect)
-         colect.snp.makeConstraints { (make) in
-//             if #available(iOS 11.0, *) {
-//                 make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-//             }else{
-//                 make.top.equalTo(topLayoutGuide.snp.top)
-//             }
-            make.top.equalTo(tvTitle.snp.bottom).offset(5)
-             make.height.equalTo(60)
-            make.left.equalToSuperview().offset(10)
-             make.right.equalToSuperview()
-         }
-     }
-     
-     func getListCategory() {
-         Alamofire.request("https://mobishops.herokuapp.com/category/list").responseJSON{ [self](res) in
-             let object: AnyObject = res.value as AnyObject
-             let dic: [AnyObject] = object as? [AnyObject] ?? []
-             dic.forEach { (i) in
-                 let item = CategoryModel(object: i)
-                 self.arrCategory.append(item)
-             }
-            arrCategory[0].checkChoose = true
-             colect.reloadData()
-         }
-     }
+        let layout = UICollectionViewFlowLayout()
+        let colect = BaseCollectionView(frame: .zero, collectionViewLayout: layout)
+        colect.register(ProductCell.self, forCellWithReuseIdentifier: "ProductCell")
+        colect.register(CellColectionViewCateogory.self, forCellWithReuseIdentifier: "CellColectionViewCateogory")
+        colect.delegate = self
+        colect.dataSource = self
+        colect.backgroundColor = .white
+        layout.scrollDirection = .vertical
+        
+        return colect
+    }()
     
-    func getListProduct(idCategory : String) {
-        Alamofire.request("http://mobishops.herokuapp.com/product/cate=\(idCategory)").responseJSON{ [self](res) in
+    func setUpColectView() {
+        view.addSubview(colect)
+        colect.snp.makeConstraints { (make) in
+            //             if #available(iOS 11.0, *) {
+            //                 make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            //             }else{
+            //                 make.top.equalTo(topLayoutGuide.snp.top)
+            //             }
+            make.top.equalTo(tvTitle.snp.bottom).offset(5)
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(0)
+            make.right.equalToSuperview().offset(0)
+        }
+    }
+    
+    func getListCategory() {
+        Alamofire.request("https://mobishops.herokuapp.com/category/list").responseJSON{ [self](res) in
+            let object: AnyObject = res.value as AnyObject
+            let dic: [AnyObject] = object as? [AnyObject] ?? []
+            dic.forEach { (i) in
+                let item = CategoryModel(object: i)
+                self.arrCategory.append(item)
+            }
+            if arrCategory.count > 0{
+                arrCategory[0].checkChoose = true
+                getListProduct(idCategory: arrCategory[0].categoryId)
+            }
+            colect.reloadData()
+        }
+    }
+    
+    func getListProduct(idCategory : Int) {
+        Alamofire.request("https://mobishops.herokuapp.com/product/cate=\(idCategory)").responseJSON{ [self](res) in
+            
             let object: AnyObject = res.value as AnyObject
             let dic: [AnyObject] = object as? [AnyObject] ?? []
             dic.forEach { (i) in
@@ -136,6 +142,7 @@ class DashBoardController: UIViewController {
 }
 
 extension DashBoardController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2 // chia ra 2 cell 
     }
@@ -146,33 +153,33 @@ extension DashBoardController : UICollectionViewDataSource, UICollectionViewDele
             return 1
         default:
             return arrProduct.count
-            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        switch indexPath.section {
+        case 0:
+            let cell:  CellColectionViewCateogory = collectionView.dequeueReusableCell(withReuseIdentifier: "CellColectionViewCateogory", for: indexPath) as! CellColectionViewCateogory
+            cell.arrCate = arrCategory
+            cell.colect.reloadData()
+            return cell
+            
+        default:
+            let cell:  ProductCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as! ProductCell
+            
+            cell.displayCell(customer: arrProduct[indexPath.row])
+            return cell
+            
         }
         
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            
-            switch indexPath.section {
-            case 0:
-                let cell:  CellColectionViewCateogory = collectionView.dequeueReusableCell(withReuseIdentifier: "CellColectionViewCateogory", for: indexPath) as! CellColectionViewCateogory
-                cell.arrCate = arrCategory
-                cell.colect.reloadData()
-                return cell
-                
-            default:
-                let cell:  ProductCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as! ProductCell
-                
-                cell.displayCell(customer: arrProduct[indexPath.row])
-                return cell
-                
-            }
-            
-        }
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
             return CGSize(width: Dimension.shared.width_screen, height: 45)
         default:
-            return CGSize(width: (Dimension.shared.width_screen / 2) - 40, height: 300)
+            return CGSize(width: (Dimension.shared.width_screen / 2) - 20, height: 200)
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -180,24 +187,22 @@ extension DashBoardController : UICollectionViewDataSource, UICollectionViewDele
     } // khoang cach giua 2 cell theo chieu tren duoi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 10
     }// khoang cach giua 2 cell theo chieu trai phai
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
     } // khoang cach giua colectionview so vs cha no
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        for i in 0..<arrCategory.count {
-//            if i == indexPath.row {
-//                arrCategory[i].checkChoose = true
-//                getListProduct(idCategory: arrCategory[i].categoryId)
-//            }
-//            else{
-//                arrCategory[i].checkChoose = false
-//            }
-//        }
-//        colect.reloadData()
+        let vc = ProductDetailController()
+        
+        vc.modalPresentationStyle = .fullScreen
+        vc.data = arrProduct[indexPath.row]
+//        self.PushVC(vc: vc)
+        navigationController?.navigationBar.isHidden = false
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
 }

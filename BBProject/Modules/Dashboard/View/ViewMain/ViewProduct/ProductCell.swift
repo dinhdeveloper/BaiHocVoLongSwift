@@ -19,7 +19,7 @@ class ProductCell:  BaseCollectionCell {
     var viewItem: UIView =  {
        let viewItem = UIView()
         viewItem.layer.borderWidth = 1
-        viewItem.layer.borderColor = UIColor.gray.withAlphaComponent(0.3).cgColor
+        viewItem.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
         viewItem.layer.cornerRadius = 5
         return viewItem
     }()
@@ -27,11 +27,11 @@ class ProductCell:  BaseCollectionCell {
     func setUpViewItem() {
         addSubview(viewItem)
         viewItem.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(30)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.width.equalTo(Dimension.shared.width_screen / 2)
-            make.height.equalTo(200)
+            make.width.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
     
@@ -44,9 +44,8 @@ class ProductCell:  BaseCollectionCell {
     func setUpImvProduct() {
         viewItem.addSubview(imvProduct)
         imvProduct.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
+            make.centerX.equalToSuperview()
             make.width.equalTo(100)
             make.height.equalTo(100)
         }
@@ -57,6 +56,7 @@ class ProductCell:  BaseCollectionCell {
         tvNameProduct.textColor = .black
         tvNameProduct.textAlignment = .center
         tvNameProduct.font = .systemFont(ofSize: 16)
+        tvNameProduct.numberOfLines = 1
         return tvNameProduct
     }()
     
@@ -64,9 +64,9 @@ class ProductCell:  BaseCollectionCell {
         viewItem.addSubview(tvNameProduct)
         tvNameProduct.snp.makeConstraints { (make) in
             make.top.equalTo(imvProduct.snp.bottom).offset(20)
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview().offset(-10)
         }
     }
     

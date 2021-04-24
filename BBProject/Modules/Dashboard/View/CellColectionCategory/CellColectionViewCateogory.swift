@@ -70,16 +70,16 @@ class CellColectionViewCateogory: BaseCollectionCell, UICollectionViewDataSource
     } // khoang cach giua colectionview so vs cha no
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        var index = 0
         for i in 0..<arrCate.count {
             if i == indexPath.row {
                 arrCate[i].checkChoose = true
-                //NotificationCenter.default.post(name: NSNotification.Name("CATE"), object: arrCate[i].categoryId)
+                index = i
             }
             else{
                 arrCate[i].checkChoose = false
             }
         }
-        colect.reloadData()
+        NotificationCenter.default.post(name: NSNotification.Name("CATE"), object: ["id": arrCate[index].categoryId, "arr": arrCate])
     }
 }

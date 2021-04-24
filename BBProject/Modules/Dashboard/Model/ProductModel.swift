@@ -9,33 +9,45 @@
 import Foundation
 
 struct ProductModel {
-    var productId: String
+    var productId: Int
     var categoryId: String
     var productName: String
     var productPrice: String
+    var priceSale: String
+    var percentSale: String
+    var rate: String
     var productImage: String
     
     init(){
-         productId = ""
-         categoryId = ""
-         productName = ""
-         productPrice = ""
-         productImage = ""
+        productId = 0
+        categoryId = ""
+        productName = ""
+        productPrice = ""
+        productImage = ""
+        priceSale = ""
+        percentSale = ""
+        rate = ""
     }
     init(object: AnyObject) {
         if let dic: [String: AnyObject] = object as? [String: AnyObject]{
-            productId = dic["productId"] as? String ?? ""
+            productId = dic["productId"] as? Int ?? 0
             categoryId = dic["categoryId"] as? String ?? ""
             productName = dic["productName"] as? String ?? ""
             productPrice = dic["productPrice"] as? String ?? ""
             productImage = dic["productImage"] as? String ?? ""
-        
+            priceSale = dic["priceSale"] as? String ?? ""
+            percentSale = dic["percentSale"] as? String ?? ""
+            rate = dic["rate"] as? String ?? ""
+            
         }else{
-             productId = ""
-             categoryId = ""
-             productName = ""
-             productPrice = ""
-             productImage = ""
+            productId = 0
+            categoryId = ""
+            productName = ""
+            productPrice = ""
+            productImage = ""
+            priceSale = ""
+            percentSale = ""
+            rate = ""
         }
     }
 }

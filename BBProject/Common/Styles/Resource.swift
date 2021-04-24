@@ -35,6 +35,7 @@ public class Resource {
         let checkerror1 : UIImage = UIImage(named: "checkerror1x") ?? UIImage()
         let checksuccess : UIImage = UIImage(named: "checked_success1x") ?? UIImage()
         let back1x : UIImage = UIImage(named: "back") ?? UIImage()
+        let backHeader : UIImage = UIImage(named: "left_arrow") ?? UIImage()
         let arrow_point_down : UIImage = UIImage(named: "arrow-point-to-down1x") ?? UIImage()
         let user_avatar = UIImage(named: "user_avatar") ?? UIImage()
         var Icon_Job = UIImage(named: "Icon_Job") ?? UIImage()
