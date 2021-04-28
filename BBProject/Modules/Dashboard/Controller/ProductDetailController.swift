@@ -18,9 +18,18 @@ class ProductDetailController : UIViewController
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpImage()
+        setUpBtnBuy()
         
-        self.imvProduct.displayImgPhoto(urlPhoto: data.productImage, photo_default: Resource.Images.shared.photoDefault)
-        self.title = "\(data.productName)"
+        if data.productName != "" {
+            self.imvProduct.displayImgPhoto(urlPhoto: data.productImage, photo_default: Resource.Images.shared.photoDefault)
+            self.title = "\(data.productName)"
+            btnBuy.isHidden = false
+           
+        }
+        else {
+            self.title = "Detail Nha"
+            btnBuy.isHidden = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +63,24 @@ class ProductDetailController : UIViewController
             make.centerX.equalToSuperview()
             make.width.equalTo(150)
             make.height.equalTo(150)
+        }
+    }
+    
+    let btnBuy : UIButton = {
+        let btnBuy = UIButton()
+        btnBuy.layer.cornerRadius = 10
+        btnBuy.backgroundColor = .blue
+        btnBuy.setTitle("Mua Ngay", for: .normal)
+        return btnBuy
+    }()
+    
+    func setUpBtnBuy() {
+        view.addSubview(btnBuy)
+        btnBuy.snp.makeConstraints { (make) in
+            make.top.equalTo(imvProduct.snp.bottom).offset(30)
+            make.left.equalToSuperview().offset(40)
+            make.right.equalToSuperview().offset(-40)
+            make.height.equalTo(40)
         }
     }
     

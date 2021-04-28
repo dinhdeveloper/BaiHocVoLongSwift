@@ -18,13 +18,16 @@
 		C37634572632A4100013C881 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37634562632A40F0013C881 /* ProductModel.swift */; };
 		C376345B2632A5980013C881 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376345A2632A5980013C881 /* ProductCell.swift */; };
 		C376345F2632AF6E0013C881 /* CellColectionViewCateogory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376345E2632AF6E0013C881 /* CellColectionViewCateogory.swift */; };
+		C37D376126367B54009D8151 /* GioHangController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37D376026367B54009D8151 /* GioHangController.swift */; };
 		C3867838262D3CF500240E52 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3867837262D3CF500240E52 /* MusicModel.swift */; };
 		C386783C262D638F00240E52 /* CellCustomerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C386783B262D638F00240E52 /* CellCustomerManager.swift */; };
 		C386783F262D690300240E52 /* CellEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C386783E262D690300240E52 /* CellEmpty.swift */; };
+		C393DCFC2637B1120042B09F /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C393DCFB2637B1120042B09F /* CameraController.swift */; };
 		C394067C262EBC6700872DCC /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C394067B262EBC6700872DCC /* DetailController.swift */; };
 		C397FD89263134B1008424AD /* CellMusicColectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C397FD88263134B1008424AD /* CellMusicColectionView.swift */; };
 		C3A3F8F42633B452008C2C7B /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3F8F32633B452008C2C7B /* TestController.swift */; };
 		C3A3F8F72633C0AA008C2C7B /* ProductDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3F8F62633C0AA008C2C7B /* ProductDetailController.swift */; };
+		C3AA16AA26365F4000BF6CD2 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AA16A926365F3F00BF6CD2 /* TabViewController.swift */; };
 		C3E8004F228A572D0019D195 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E8004E228A572D0019D195 /* AppDelegate.swift */; };
 		C3E80051228A572D0019D195 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E80050228A572D0019D195 /* ViewController.swift */; };
 		C3E80054228A572E0019D195 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E80052228A572E0019D195 /* Main.storyboard */; };
@@ -65,13 +68,16 @@
 		C37634562632A40F0013C881 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		C376345A2632A5980013C881 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		C376345E2632AF6E0013C881 /* CellColectionViewCateogory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellColectionViewCateogory.swift; sourceTree = "<group>"; };
+		C37D376026367B54009D8151 /* GioHangController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GioHangController.swift; sourceTree = "<group>"; };
 		C3867837262D3CF500240E52 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
 		C386783B262D638F00240E52 /* CellCustomerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCustomerManager.swift; sourceTree = "<group>"; };
 		C386783E262D690300240E52 /* CellEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellEmpty.swift; sourceTree = "<group>"; };
+		C393DCFB2637B1120042B09F /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		C394067B262EBC6700872DCC /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		C397FD88263134B1008424AD /* CellMusicColectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellMusicColectionView.swift; sourceTree = "<group>"; };
 		C3A3F8F32633B452008C2C7B /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		C3A3F8F62633C0AA008C2C7B /* ProductDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailController.swift; sourceTree = "<group>"; };
+		C3AA16A926365F3F00BF6CD2 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		C3E8004B228A572D0019D195 /* BBProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BBProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E8004E228A572D0019D195 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3E80050228A572D0019D195 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +169,8 @@
 			children = (
 				C3763427263255D60013C881 /* DashBoardController.swift */,
 				C3A3F8F62633C0AA008C2C7B /* ProductDetailController.swift */,
+				C3AA16A926365F3F00BF6CD2 /* TabViewController.swift */,
+				C393DCFB2637B1120042B09F /* CameraController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -170,6 +178,7 @@
 		C376342C2632564B0013C881 /* ViewMain */ = {
 			isa = PBXGroup;
 			children = (
+				C37D375F26367B0F009D8151 /* ViewCart */,
 				C37634592632A5790013C881 /* ViewProduct */,
 				C3763434263268730013C881 /* ViewCategory */,
 			);
@@ -206,6 +215,14 @@
 				C376345E2632AF6E0013C881 /* CellColectionViewCateogory.swift */,
 			);
 			path = CellColectionCategory;
+			sourceTree = "<group>";
+		};
+		C37D375F26367B0F009D8151 /* ViewCart */ = {
+			isa = PBXGroup;
+			children = (
+				C37D376026367B54009D8151 /* GioHangController.swift */,
+			);
+			path = ViewCart;
 			sourceTree = "<group>";
 		};
 		C3867830262D398200240E52 /* Views */ = {
@@ -474,6 +491,7 @@
 				C394067C262EBC6700872DCC /* DetailController.swift in Sources */,
 				C376345B2632A5980013C881 /* ProductCell.swift in Sources */,
 				C3E8006D228A5AAE0019D195 /* Theme.swift in Sources */,
+				C393DCFC2637B1120042B09F /* CameraController.swift in Sources */,
 				C3867838262D3CF500240E52 /* MusicModel.swift in Sources */,
 				C3E80083228A6E830019D195 /* BaseTableview.swift in Sources */,
 				C3744A8525636F6D007F66CB /* BaseViewPopup.swift in Sources */,
@@ -485,9 +503,11 @@
 				C3E80071228A67370019D195 /* Resource.swift in Sources */,
 				C3E8006F228A5B760019D195 /* Dimension.swift in Sources */,
 				C3E8008F228A71470019D195 /* TextFieldWithTitle.swift in Sources */,
+				C37D376126367B54009D8151 /* GioHangController.swift in Sources */,
 				C3744A8725637072007F66CB /* ResultResponse.swift in Sources */,
 				C3E80093228A71D90019D195 /* TextFieldRoundShadow.swift in Sources */,
 				C3E80075228A68C80019D195 /* API.swift in Sources */,
+				C3AA16AA26365F4000BF6CD2 /* TabViewController.swift in Sources */,
 				C3E8008D228A70E80019D195 /* TextViewWithTitle.swift in Sources */,
 				C3E80089228A70520019D195 /* BaseMenu.swift in Sources */,
 				C3E8004F228A572D0019D195 /* AppDelegate.swift in Sources */,

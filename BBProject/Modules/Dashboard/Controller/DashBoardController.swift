@@ -14,6 +14,8 @@ class DashBoardController: UIViewController {
     
     var arrCategory: [CategoryModel] = []
     var arrProduct: [ProductModel] = []
+    var arrTemp: [ProductModel] = []
+    private var time: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +53,10 @@ class DashBoardController: UIViewController {
     }
     
     
-    var searchView: SearchView = {
+    lazy var searchView: SearchView = {
         let searchView = SearchView()
+        searchView.edtSearch.addTarget(self, action: #selector(searchPro(_:)), for: .editingChanged)
+        searchView.edtSearch.returnKeyType = .search
         return searchView
     }()
     
@@ -136,9 +140,32 @@ class DashBoardController: UIViewController {
                 let item = ProductModel(object: i)
                 self.arrProduct.append(item)
             }
+            self.arrTemp = self.arrProduct
             colect.reloadData()
         }
     }
+    
+    @objc private func searchPro(_ sender: UIButton){
+        if time != nil{
+            time.invalidate()
+        }
+        time = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerSearch), userInfo: nil, repeats: false)
+        
+    }
+    @objc private func timerSearch(){
+        arrProduct = []
+        //uppercased: chu hoa, lowercased
+        arrTemp.forEach { (i) in
+            if i.productName.uppercased().contains(searchView.edtSearch.text!.uppercased()){
+                arrProduct.append(i)
+            }
+        }
+        if searchView.edtSearch.text! == ""{
+            arrProduct = arrTemp
+        }
+        colect.reloadData()
+    }
+    
 }
 
 extension DashBoardController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -195,14 +222,13 @@ extension DashBoardController : UICollectionViewDataSource, UICollectionViewDele
     } // khoang cach giua colectionview so vs cha no
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let vc = ProductDetailController()
-        
-        vc.modalPresentationStyle = .fullScreen
-        vc.data = arrProduct[indexPath.row]
-//        self.PushVC(vc: vc)
-        navigationController?.navigationBar.isHidden = false
-        self.navigationController?.pushViewController(vc, animated: true)
-        
+        if indexPath.section == 1{
+            let vc = ProductDetailController()
+            vc.modalPresentationStyle = .fullScreen
+            vc.data = arrProduct[indexPath.row]
+            //self.PushVC(vc: vc)
+            navigationController?.navigationBar.isHidden = false
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
