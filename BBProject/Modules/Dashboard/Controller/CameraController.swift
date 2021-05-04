@@ -16,9 +16,32 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate & UINa
 
         //setUpImageView()
         setUpShowCamera()
+        setUpShowPopup()
         setUpChooseImage()
         
     }
+    
+    //MARK: setup pop error, success, waiting
+    lazy private var popup_error: BaseViewPopUp = {
+        let popup = BaseViewPopUp()
+        popup.btnOK.backgroundColor = Theme.shared.ograneColor
+        popup.btnOK.addTarget(self, action: #selector(actionHidePopupError(_:)), for: .touchUpInside)
+        return popup
+    }()
+    lazy private var popup_success: BaseViewPopUp = {
+        let popup = BaseViewPopUp()
+        popup.btnOK.backgroundColor = Theme.shared.ograneColor
+        popup.btnOK.addTarget(self, action: #selector(actionHidePopupSuccess(_:)), for: .touchUpInside)
+        return popup
+    }()
+    lazy private var popup_confirm: PopUpTwoAction = {
+        let popup = PopUpTwoAction()
+        popup.btnleft.addTarget(self, action: #selector(actionDeleteCustomerOK(_:)), for: .touchUpInside)
+        popup.btnRight.addTarget(self, action: #selector(actionDeleteCustomerNO(_:)), for: .touchUpInside)
+        popup.img_success.image = Resource.Images.shared.warning_yellow
+        popup.btnRight.backgroundColor = Theme.shared.ograneColor
+        return popup
+    }()
     
     
     lazy var btnShowCamera : UIButton = {
@@ -29,6 +52,18 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate & UINa
         btnShowCamera.addTarget(self, action: #selector(showCamera), for: .touchUpInside)
         return btnShowCamera
     }()
+    
+    lazy var btnShowPopup : UIButton = {
+        let btnShowPopup = UIButton()
+        btnShowPopup.backgroundColor = Theme.shared.item_click_category
+        btnShowPopup.layer.cornerRadius = 10
+        btnShowPopup.setTitle("Show Popup", for: .normal)
+        btnShowPopup.addTarget(self, action: #selector(showPopup), for: .touchUpInside)
+        return btnShowPopup
+    }()
+    
+    
+    
     
     lazy var btnImage : UIButton = {
         let btnShowCamera = UIButton()
@@ -55,6 +90,18 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate & UINa
             make.height.equalTo(44)
         }
     }
+    
+    func setUpShowPopup() {
+        view.addSubview(btnShowPopup)
+        btnShowPopup.snp.makeConstraints { (make) in
+            //make.top.equalTo(imageView.snp.bottom)
+            make.bottom.equalTo(btnShowCamera.snp.top).offset(-30)
+            make.left.equalToSuperview().offset(30)
+            make.width.equalTo((Dimension.shared.width_screen/2)-40)
+            make.height.equalTo(44)
+        }
+    }
+    
     
     func setUpChooseImage() {
         view.addSubview(btnImage)
@@ -94,6 +141,10 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate & UINa
             }
     }
     
+    @objc func showPopup() {
+        self.popup_success.showPopUp(parentView: self.view, mess: "Tạo mới nhân viên thành công!", title: Resource.Title.shared.title_success, type: TYPE_POPUP.SUCCESS)
+    }
+    
     @objc func chooseImage() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
                 let imagePicker = UIImagePickerController()
@@ -118,5 +169,23 @@ class CameraController: UIViewController, UIImagePickerControllerDelegate & UINa
         }
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    //MARK : ACTION
+    
+    @objc private func actionHidePopupError(_ sender: UIButton){
+        popup_error.removeFromSuperview()
+    }
+    @objc private func actionHidePopupSuccess(_ sender: UIButton){
+        popup_success.removeFromSuperview()
+    }
+    @objc private func actionDeleteCustomerOK(_ sender: UIButton){
+        popup_confirm.removeFromSuperview()
+        //deleteCustomer()
+        
+    }
+    @objc private func actionDeleteCustomerNO(_ sender: UIButton){
+        popup_confirm.removeFromSuperview()
+    }
+    
 }
 

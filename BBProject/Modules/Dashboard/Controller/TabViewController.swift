@@ -51,6 +51,7 @@ class TabViewController: UITabBarController {
             make.height.equalTo(60)
         }
     }
+    //MARK: funtion
     private var is_show = false
     
     @objc func onClickItem() {

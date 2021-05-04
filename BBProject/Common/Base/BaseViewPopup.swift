@@ -9,6 +9,11 @@
 
 import UIKit
 
+enum TYPE_POPUP{
+    case SUCCESS
+    case ERROR
+}
+
 class BaseViewPopUp: BaseView {
     //MARK: UI ELements
     var viewMain : UIView = {
@@ -62,12 +67,20 @@ class BaseViewPopUp: BaseView {
         setupBtnOK()
         
     }
-    func showPopUp(parentView : UIView, mess : String, title : String, img: UIImage) {
+    func showPopUp(parentView : UIView, mess : String, title : String, type: TYPE_POPUP) {
         parentView.addSubview(self)
         self.frame = CGRect(x: 0, y: 0, width: Dimension.shared.width_screen, height: Dimension.shared.height_screen)
         lbl_mess.text = mess
         lbl_Title.text = title
-        imgMess.image = img
+        //imgMess.image = img
+        switch type {
+        case TYPE_POPUP.SUCCESS:
+            imgMess.image =  Resource.Images.shared.checksuccess
+            break
+        case TYPE_POPUP.ERROR:
+            imgMess.image =  Resource.Images.shared.checkerror1
+            break
+        }
     }
     
     //MARK: setup view

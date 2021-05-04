@@ -94,13 +94,13 @@ class vcBaseController: UIViewController, ResuableView {
                     self.activityIndicator?.stopAnimating()
                     print("error: \(response.description)")
                     if response.description.contains("Alamofire.AFError.ResponseSerializationFailureReason.inputDataNilOrZeroLength"){
-                        self.popError.showPopUp(parentView: self.view, mess: "Bad Json", title: Resource.Title.shared.title_error, img: Resource.Images.shared.checkerror1)
+                        self.popError.showPopUp(parentView: self.view, mess: "Bad Json", title: Resource.Title.shared.title_error, type: TYPE_POPUP.ERROR)
                         self.popError.btnOK.addTarget(self, action: #selector(self.actionHidePop(_:)), for: .touchUpInside)
                     }else{
-                        self.popError.showPopUp(parentView: self.view, mess: "The Internet connection appears to be offline.", title: "The request timed out", img: Resource.Images.shared.checkerror1)
+                        self.popError.showPopUp(parentView: self.view, mess: "The Internet connection appears to be offline.", title: "The request timed out", type: TYPE_POPUP.ERROR)
                         self.popError.btnOK.addTarget(self, action: #selector(self.actionHidePop(_:)), for: .touchUpInside)
                     }
-                    
+
                 }
                 break
             }
