@@ -56,7 +56,7 @@ class CategoryCell: BaseCollectionCell {
     func displayCell(customer: CategoryModel){
         tvCategory.text = customer.categoryName
         if customer.checkChoose {
-            viewTexView.backgroundColor = Theme.shared.item_click_category
+            viewTexView.backgroundColor = #colorLiteral(red: 0, green: 0.6193160415, blue: 0.9972273707, alpha: 1)
             tvCategory.textColor = .black
         }else{
             viewTexView.backgroundColor = UIColor.gray.withAlphaComponent(0.3)

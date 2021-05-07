@@ -27,12 +27,12 @@ class TabViewController: UITabBarController {
     
     private func setupTabbar(){
         let vc1 = DashBoardController()
-        //let vc2 = GioHangController()
+        let vc2 = LoginViewController()
         vc1.tabBarItem = UITabBarItem(title: "Giao dịch", image: UIImage() , tag: 0)
-        //vc2.tabBarItem = UITabBarItem(title: "Gio Hang", image: UIImage() , tag: 1)
+        vc2.tabBarItem = UITabBarItem(title: "Login", image: UIImage() , tag: 1)
         let vc3 = CameraController()
-        vc3.tabBarItem = UITabBarItem(title: "Camera", image: UIImage() , tag: 1)
-        arrController = [vc1, vc3]
+        vc3.tabBarItem = UITabBarItem(title: "Camera", image: UIImage() , tag: 2)
+        arrController = [vc1, vc2 , vc3]
         self.setViewControllers(arrController, animated: true)
     }
     

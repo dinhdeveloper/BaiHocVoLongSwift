@@ -30,6 +30,8 @@ class DashBoardController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(getCategoryId(_:)), name: NSNotification.Name("CATE"), object: nil)
         
+        Logger.log(.error, "Invalid Credit Information")
+        
     }
     
     @objc func getCategoryId(_ idCategory: Notification){
