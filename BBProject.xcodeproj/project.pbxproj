@@ -26,6 +26,7 @@
 		C386783F262D690300240E52 /* CellEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C386783E262D690300240E52 /* CellEmpty.swift */; };
 		C38E5CFE2646164D0013D906 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38E5CFD2646164D0013D906 /* MusicViewController.swift */; };
 		C38E5D0126461A380013D906 /* MusicDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38E5D0026461A380013D906 /* MusicDetailController.swift */; };
+		C38E5D102646871D0013D906 /* CustomNotifyMusicUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38E5D0F2646871D0013D906 /* CustomNotifyMusicUIView.swift */; };
 		C390E7AF26410A38004447EB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390E7AE26410A38004447EB /* Logger.swift */; };
 		C393DCFC2637B1120042B09F /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C393DCFB2637B1120042B09F /* CameraController.swift */; };
 		C394067C262EBC6700872DCC /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C394067B262EBC6700872DCC /* DetailController.swift */; };
@@ -84,6 +85,7 @@
 		C386783E262D690300240E52 /* CellEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellEmpty.swift; sourceTree = "<group>"; };
 		C38E5CFD2646164D0013D906 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		C38E5D0026461A380013D906 /* MusicDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailController.swift; sourceTree = "<group>"; };
+		C38E5D0F2646871D0013D906 /* CustomNotifyMusicUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotifyMusicUIView.swift; sourceTree = "<group>"; };
 		C390E7AE26410A38004447EB /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		C393DCFB2637B1120042B09F /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		C394067B262EBC6700872DCC /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 		C3867830262D398200240E52 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C38E5D0F2646871D0013D906 /* CustomNotifyMusicUIView.swift */,
 				C386783B262D638F00240E52 /* CellCustomerManager.swift */,
 				C386783E262D690300240E52 /* CellEmpty.swift */,
 				C397FD88263134B1008424AD /* CellMusicColectionView.swift */,
@@ -523,6 +526,7 @@
 				C3744A8525636F6D007F66CB /* BaseViewPopup.swift in Sources */,
 				C376342F2632567F0013C881 /* SearchView.swift in Sources */,
 				C3E80087228A6EF10019D195 /* BaseViewNavigator.swift in Sources */,
+				C38E5D102646871D0013D906 /* CustomNotifyMusicUIView.swift in Sources */,
 				C3E80073228A687E0019D195 /* BaseController.swift in Sources */,
 				C3E80057228A572E0019D195 /* BBProject.xcdatamodeld in Sources */,
 				C3E8008B228A70960019D195 /* MenuBar.swift in Sources */,
