@@ -31,6 +31,8 @@ class TabViewController: UITabBarController {
     
     
     private func setupTabbar(){
+        
+        
         let vc1 = DashBoardController()
         let vc2 = LoginViewController()
         vc1.tabBarItem = UITabBarItem(title: "Giao dịch", image: UIImage(named: "iconSearch") , tag: 0)
@@ -74,13 +76,14 @@ class TabViewController: UITabBarController {
     
     
     
-    var miniPlayer: MiniPlayerBaseView = {
+   lazy var miniPlayer: MiniPlayerBaseView = {
        let layout = MiniPlayerBaseView()
         layout.backgroundColor = UIColor.white
         layout.layer.shadowColor = UIColor.gray.cgColor
         layout.layer.shadowOffset = CGSize(width: -1, height: -1) // do bong
         layout.layer.shadowRadius = 3
         layout.layer.shadowOpacity = 0.2
+    
         return layout
     }()
     
