@@ -13,6 +13,7 @@ class CellCustomerManager: BaseTableViewCell {
     override func initialize() {
         setUpImageView()
         setUpTvName()
+        selectionStyle = .none
     }
     
     private let imageCustomer : UIImageView = {

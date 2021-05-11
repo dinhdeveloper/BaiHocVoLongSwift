@@ -16,22 +16,27 @@ class TabViewController: UITabBarController {
 
         // Do any additional setup after loading the view.
         setupTabbar()
-        showFloatAction()
+        //showFloatAction()
         
         self.selectedIndex = 0
         self.selectedViewController = arrController[0]
         tabBar.tintColor = .red
         tabBar.unselectedItemTintColor = .blue
+        
+        setUpLayoutMini()
+        
+        //miniPlayer.isHidden = true
+        
     }
     
     
     private func setupTabbar(){
         let vc1 = DashBoardController()
         let vc2 = LoginViewController()
-        vc1.tabBarItem = UITabBarItem(title: "Giao dịch", image: UIImage() , tag: 0)
-        vc2.tabBarItem = UITabBarItem(title: "Login", image: UIImage() , tag: 1)
-        let vc3 = CameraController()
-        vc3.tabBarItem = UITabBarItem(title: "Camera", image: UIImage() , tag: 2)
+        vc1.tabBarItem = UITabBarItem(title: "Giao dịch", image: UIImage(named: "iconSearch") , tag: 0)
+        vc2.tabBarItem = UITabBarItem(title: "Login", image: UIImage(named: "iconSearch") , tag: 1)
+        let vc3 = MusicViewController()
+        vc3.tabBarItem = UITabBarItem(title: "Music", image: UIImage(named: "iconSearch") , tag: 2)
         arrController = [vc1, vc2 , vc3]
         self.setViewControllers(arrController, animated: true)
     }
@@ -66,4 +71,28 @@ class TabViewController: UITabBarController {
         }
         is_show = !is_show
     }
+    
+    
+    
+    var miniPlayer: MiniPlayerBaseView = {
+       let layout = MiniPlayerBaseView()
+        layout.backgroundColor = UIColor.white
+        layout.layer.shadowColor = UIColor.gray.cgColor
+        layout.layer.shadowOffset = CGSize(width: -1, height: -1) // do bong
+        layout.layer.shadowRadius = 3
+        layout.layer.shadowOpacity = 0.2
+        return layout
+    }()
+    
+    func setUpLayoutMini() {
+        view.addSubview(miniPlayer)
+        miniPlayer.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalTo(tabBar.snp.top)
+            make.height.equalTo(60)
+        }
+    }
+
+    
 }

@@ -8,12 +8,13 @@
 
 import UIKit
 import AVFoundation
+import MediaPlayer
 
 class MusicDetailController: vcBaseController {
     
     public var data = MusicModel()
     
-   var isPlaying = false
+    var isPlaying = false
     
     public var player : AVPlayer?
     
@@ -212,38 +213,182 @@ class MusicDetailController: vcBaseController {
         isPlaying = !isPlaying
         
     }
-    
+    //MARK: init player
     func playInit() {
-        let url = URL(string: data.links)
-        player = AVPlayer(url: url!)
-        guard let duration = player?.currentItem?.asset.duration else {
-            return
+        if data.links != "" {
+            let url = URL(string: data.links)
+            player = AVPlayer(url: url!)
+            guard let duration = player?.currentItem?.asset.duration else {
+                return
+            }
+    
+            let durationBySecond = CMTimeGetSeconds(duration)
+            let minute_ = Int(durationBySecond) / 60
+            let second_ = Int(durationBySecond) % 60
+            
+            let minute = minute_ > 9 ? "\(minute_)" : "0\(minute_)"
+            let second = second_ > 9 ? "\(second_)" : "0\(second_)"
+            
+            self.timerEnd.text = "\(minute):\(second)"
+            self.sliderProcess.maximumValue = Float(durationBySecond)
+            
+            player?.play()
+            
+            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
+            
+            let image = UIImage(named: "buianhtuan")!
+            let artwork = MPMediaItemArtwork.init(boundsSize: image.size, requestHandler: { (size) -> UIImage in
+                    return image
+            })
+            
+            /// Show mini player lock screen app
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+                MPMediaItemPropertyTitle : data.name != "" ? data.name : "Dinh khung",
+                MPMediaItemPropertyArtist: data.singer != "" ? data.singer : "Diem Khung",
+                MPMediaItemPropertyPlaybackDuration: player?.currentItem!.asset.duration ?? "0",
+                MPMediaItemPropertyArtwork: artwork
+            ]
+            UIApplication.shared.beginReceivingRemoteControlEvents()
+            becomeFirstResponder()
+            
         }
-        let durationBySecond = CMTimeGetSeconds(duration)
-        let min = Int(durationBySecond) / 60
-        let second = Int(durationBySecond) % 60
-        self.timerEnd.text = "\(min):\(second)"
-        self.sliderProcess.maximumValue = Float(durationBySecond)
+        else {
+            popup_error.showPopUp(parentView: view, mess: "Không tìm thấy link bài hát", title: Resource.Title.shared.title_error, type: TYPE_POPUP.ERROR)
+            popup_error.btnOK.addTarget(self, action: #selector(onBack), for: .touchUpInside)
+        }
+    }
+    
+    //This returns song length
+    func calculateTimeFromNSTimeInterval(_ duration:TimeInterval) ->(minute:String, second:String){
+       // let hour_   = abs(Int(duration)/3600)
+        let minute_ = abs(Int((duration/60).truncatingRemainder(dividingBy: 60)))
+        let second_ = abs(Int(duration.truncatingRemainder(dividingBy: 60)))
         
-        player?.play()
-        
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
+       // var hour = hour_ > 9 ? "\(hour_)" : "0\(hour_)"
+        let minute = minute_ > 9 ? "\(minute_)" : "0\(minute_)"
+        let second = second_ > 9 ? "\(second_)" : "0\(second_)"
+        return (minute,second)
+    }
+    
+
+    
+//    func showTotalSongLength(){
+//        calculateSongLength()
+//        totalLengthOfAudioLabel.text = totalLengthOfAudio
+//    }
+//
+//
+//    func calculateSongLength(){
+//        let time = calculateTimeFromNSTimeInterval(audioLength)
+//        totalLengthOfAudio = "\(time.minute):\(time.second)"
+//    }
+    
+    override func remoteControlReceived(with event: UIEvent?) {
+        if let event = event {
+            if event.type == .remoteControl {
+                switch event.subtype {
+                case .remoteControlPlay:
+                    player?.play()
+                case .remoteControlPause:
+                    player?.pause()
+                case .remoteControlNextTrack:
+                    print("Bai tiep theo")
+                case .remoteControlPreviousTrack:
+                    print("Bai truoc do")
+                     
+                default:
+                    print("chua thiet lap")
+                }
+            }
+        }
+    }
+    
+    @objc func onBack() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    //MARK: popup
+    lazy private var popup_error: BaseViewPopUp = {
+        let popup = BaseViewPopUp()
+        popup.btnOK.addTarget(self, action: #selector(actionShowPopupError(_:)), for: .touchUpInside)
+        return popup
+    }()
+    
+    @objc private func actionShowPopupError(_ sender: UIButton){
+        popup_error.removeFromSuperview()
     }
     
     @objc func updateSlider() {
         if player != nil {
             let currentTimeBySecond = CMTimeGetSeconds((player?.currentItem?.currentTime())!)
-                sliderProcess.value = Float(currentTimeBySecond)
-            let min = Int(currentTimeBySecond) / 60
             
-            let second = Int(currentTimeBySecond) % 60
-            self.timerStart.text = "\(min):\(second)"
+            sliderProcess.value = Float(currentTimeBySecond)
+            let minute_ = Int(currentTimeBySecond) / 60
+            let second_ = Int(currentTimeBySecond) % 60
             
+            let minute = minute_ > 9 ? "\(minute_)" : "0\(minute_)"
+            let second = second_ > 9 ? "\(second_)" : "0\(second_)"
+            
+            self.timerStart.text = "\(minute):\(second)"
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         player?.pause()
+        player = nil
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    
+    
+    func downloadAndSaveAudioFile(_ audioFile: String, completion: @escaping (String) -> Void) {
+            
+            //Create directory if not present
+            let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+            let documentDirectory = paths.first! as NSString
+            let soundDirPathString = documentDirectory.appendingPathComponent("Sounds")
+            
+            do {
+                try FileManager.default.createDirectory(atPath: soundDirPathString, withIntermediateDirectories: true, attributes:nil)
+                print("directory created at \(soundDirPathString)")
+            } catch let error as NSError {
+                print("error while creating dir : \(error.localizedDescription)");
+            }
+            
+            if let audioUrl = URL(string: audioFile) {     //http://freetone.org/ring/stan/iPhone_5-Alarm.mp3
+                // create your document folder url
+                let documentsUrl =  FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first! as URL
+                let documentsFolderUrl = documentsUrl.appendingPathComponent("Sounds")
+                // your destination file url
+                let destinationUrl = documentsFolderUrl.appendingPathComponent(audioUrl.lastPathComponent)
+                
+                print(destinationUrl)
+                // check if it exists before downloading it
+                if FileManager().fileExists(atPath: destinationUrl.path) {
+                    print("The file already exists at path")
+                } else {
+                    //  if the file doesn't exist
+                    //  just download the data from your url
+                    DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async(execute: {
+                        if let myAudioDataFromUrl = try? Data(contentsOf: audioUrl){
+                            // after downloading your data you need to save it to your destination url
+                            if (try? myAudioDataFromUrl.write(to: destinationUrl, options: [.atomic])) != nil {
+                                print("file saved")
+                                completion(destinationUrl.absoluteString)
+                            } else {
+                                print("error saving file")
+                                completion("")
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    
 }

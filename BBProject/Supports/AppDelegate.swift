@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: MusicViewController())
+        window?.rootViewController = UINavigationController(rootViewController: TabViewController())
         
         let session = AVAudioSession.sharedInstance()
         do{

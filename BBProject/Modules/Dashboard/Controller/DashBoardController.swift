@@ -20,6 +20,12 @@ class DashBoardController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        //navigationController?.toolbar.isHidden = true
+        
+        //navigationController?.navigationBar.isHidden = true
+        //navigationController?.setToolbarHidden(false, animated: true)
+        
         setUpViewSearch()
         
         setUpTitle()
@@ -46,12 +52,13 @@ class DashBoardController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.isHidden = false
+       // navigationController?.navigationBar.isHidden = false
     }
     
     

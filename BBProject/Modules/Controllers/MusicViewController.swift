@@ -16,13 +16,15 @@ class MusicViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
+        //navigationController?.navigationBar.isHidden = true
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.isHidden = false
+        //navigationController?.navigationBar.isHidden = false
     }
     
     
@@ -45,6 +47,7 @@ class MusicViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let vc = MusicDetailController()
         
         vc.modalPresentationStyle = .fullScreen
@@ -56,12 +59,15 @@ class MusicViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     var arrMusic: [MusicModel] = []
-
+    //MARK: vong doi
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpTable()
         getListSong()
+        
+        
+        //setUpLayoutMini()
     }
     
     
@@ -97,6 +103,26 @@ class MusicViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.arrMusic.append(item)
             }
             tableview.reloadData()
+        }
+    }
+    
+    var miniPlayer: MiniPlayerBaseView = {
+       let layout = MiniPlayerBaseView()
+        layout.backgroundColor = UIColor.white
+        layout.layer.shadowColor = UIColor.gray.cgColor
+        layout.layer.shadowOffset = CGSize(width: -1, height: -1) // do bong
+        layout.layer.shadowRadius = 3
+        layout.layer.shadowOpacity = 0.2
+        return layout
+    }()
+    
+    func setUpLayoutMini() {
+        view.addSubview(miniPlayer)
+        miniPlayer.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.height.equalTo(60)
+            make.bottom.equalToSuperview()
         }
     }
 
