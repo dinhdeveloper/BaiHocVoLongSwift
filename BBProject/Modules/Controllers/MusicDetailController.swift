@@ -101,6 +101,7 @@ class MusicDetailController: vcBaseController {
     //MARK: slider
     lazy var sliderProcess: UISlider = {
         let slider = UISlider()
+        slider.addTarget(self, action: #selector(changeValueSlider(_:)), for: .valueChanged)
         return slider
     }()
     
@@ -111,6 +112,16 @@ class MusicDetailController: vcBaseController {
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview()
+        }
+    }
+    //MARK: on change slider
+    @objc func changeValueSlider(_ sender: AnyObject) {
+        if player != nil {
+//            player?.pause()
+//            let currentime = sliderProcess.value
+//            player?.replaceCurrentItem(with: <#T##AVPlayerItem?#>)
+//            player?.play()
+            
         }
     }
     
@@ -258,6 +269,8 @@ class MusicDetailController: vcBaseController {
         }
     }
     
+    
+    
     //This returns song length
     func calculateTimeFromNSTimeInterval(_ duration:TimeInterval) ->(minute:String, second:String){
        // let hour_   = abs(Int(duration)/3600)
@@ -295,7 +308,6 @@ class MusicDetailController: vcBaseController {
                     print("Bai tiep theo")
                 case .remoteControlPreviousTrack:
                     print("Bai truoc do")
-                     
                 default:
                     print("chua thiet lap")
                 }
@@ -330,6 +342,12 @@ class MusicDetailController: vcBaseController {
             let second = second_ > 9 ? "\(second_)" : "0\(second_)"
             
             self.timerStart.text = "\(minute):\(second)"
+            
+//            if self.sliderProcess.maximumValue == Float(currentTimeBySecond) {
+//                print("het bai nha")
+//            }
+            
+            
         }
     }
     
