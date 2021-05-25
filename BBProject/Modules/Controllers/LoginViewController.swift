@@ -273,7 +273,7 @@ class LoginViewController: vcBaseController {
     
     private func login(){
         
-        let param = [API.detect: API.shared.api_login,
+        let param = [API.shared.detect: API.shared.api_login,
                      "id_code": viewEmail.edtLogin.text!,
                      "password": viewPass.edtLogin.text!,
                      "store_code": "ABCXYZ"]

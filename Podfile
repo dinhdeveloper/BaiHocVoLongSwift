@@ -5,4 +5,5 @@ target 'BBProject' do
 	pod 'SDWebImage'
 	pod 'NVActivityIndicatorView'
 	pod 'Alamofire'
+	pod "RSLoadingView"
 end

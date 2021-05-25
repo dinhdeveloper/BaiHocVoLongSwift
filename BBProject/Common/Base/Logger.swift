@@ -7,14 +7,6 @@
 //
 import UIKit
 
-enum LogType: String{
-case error
-case warning
-case success
-case action
-case canceled
-}
-
 
 class Logger{
     

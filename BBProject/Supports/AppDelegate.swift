@@ -21,17 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.makeKeyAndVisible()
+//        window?.rootViewController = UINavigationController(rootViewController: TabViewController())
+//
+//        let session = AVAudioSession.sharedInstance()
+//        do{
+//            try session.setActive(true)
+//            try session.setCategory(AVAudioSessionCategoryPlayback)
+//        } catch{
+//            print(error.localizedDescription)
+//        }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: TabViewController())
-        
-        let session = AVAudioSession.sharedInstance()
-        do{
-            try session.setActive(true)
-            try session.setCategory(AVAudioSessionCategoryPlayback)
-        } catch{
-            print(error.localizedDescription)
-        }
+        window?.rootViewController = vcTestController()
         
         return true
     }

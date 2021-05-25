@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		010AECCBD342A9E2B4239638 /* Pods_BBProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB9D3E913DAE3896C363726 /* Pods_BBProject.framework */; };
+		C33A7A04265C8F1F007FCDEB /* vcBaseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A7A03265C8F1F007FCDEB /* vcBaseControl.swift */; };
+		C33A7A07265C9469007FCDEB /* vcTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A7A06265C9468007FCDEB /* vcTestController.swift */; };
+		C33A7A0A265C958E007FCDEB /* BaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A7A09265C958E007FCDEB /* BaseProtocol.swift */; };
+		C33A7A0D265CB0EC007FCDEB /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A7A0C265CB0EB007FCDEB /* LoadingOverlay.swift */; };
 		C3744A8525636F6D007F66CB /* BaseViewPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3744A8425636F6D007F66CB /* BaseViewPopup.swift */; };
 		C3744A8725637072007F66CB /* ResultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3744A8625637072007F66CB /* ResultResponse.swift */; };
 		C3744A8925637395007F66CB /* PopUpTwoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3744A8825637395007F66CB /* PopUpTwoAction.swift */; };
@@ -70,6 +74,10 @@
 		2EB9D3E913DAE3896C363726 /* Pods_BBProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BBProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FFE069989773229723AFF27 /* Pods-BBProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BBProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BBProject/Pods-BBProject.debug.xcconfig"; sourceTree = "<group>"; };
 		A20013F528E44C0E33DBD4BB /* Pods-BBProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BBProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-BBProject/Pods-BBProject.release.xcconfig"; sourceTree = "<group>"; };
+		C33A7A03265C8F1F007FCDEB /* vcBaseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcBaseControl.swift; sourceTree = "<group>"; };
+		C33A7A06265C9468007FCDEB /* vcTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcTestController.swift; sourceTree = "<group>"; };
+		C33A7A09265C958E007FCDEB /* BaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProtocol.swift; sourceTree = "<group>"; };
+		C33A7A0C265CB0EB007FCDEB /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		C3744A8425636F6D007F66CB /* BaseViewPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewPopup.swift; sourceTree = "<group>"; };
 		C3744A8625637072007F66CB /* ResultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultResponse.swift; sourceTree = "<group>"; };
 		C3744A8825637395007F66CB /* PopUpTwoAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpTwoAction.swift; sourceTree = "<group>"; };
@@ -157,6 +165,16 @@
 				2EB9D3E913DAE3896C363726 /* Pods_BBProject.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C33A7A02265C8EBB007FCDEB /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C33A7A03265C8F1F007FCDEB /* vcBaseControl.swift */,
+				C33A7A06265C9468007FCDEB /* vcTestController.swift */,
+				C33A7A09265C958E007FCDEB /* BaseProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		C3763422263255830013C881 /* Dashboard */ = {
@@ -307,6 +325,7 @@
 		C3E80063228A59B30019D195 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C33A7A02265C8EBB007FCDEB /* Protocol */,
 				C3763422263255830013C881 /* Dashboard */,
 				C3867831262D398D00240E52 /* Controllers */,
 				C3867830262D398200240E52 /* Views */,
@@ -370,6 +389,7 @@
 				C3744A8425636F6D007F66CB /* BaseViewPopup.swift */,
 				C3744A8825637395007F66CB /* PopUpTwoAction.swift */,
 				C390E7AE26410A38004447EB /* Logger.swift */,
+				C33A7A0C265CB0EB007FCDEB /* LoadingOverlay.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -485,23 +505,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BBProject/Pods-BBProject-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BBProject/Pods-BBProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BBProject/Pods-BBProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BBProject/Pods-BBProject-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BBProject/Pods-BBProject-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -520,6 +533,7 @@
 				C3744A8925637395007F66CB /* PopUpTwoAction.swift in Sources */,
 				C376345F2632AF6E0013C881 /* CellColectionViewCateogory.swift in Sources */,
 				C3A3F8F42633B452008C2C7B /* TestController.swift in Sources */,
+				C33A7A04265C8F1F007FCDEB /* vcBaseControl.swift in Sources */,
 				C397FD89263134B1008424AD /* CellMusicColectionView.swift in Sources */,
 				C3E80079228A6C810019D195 /* HandleUI.swift in Sources */,
 				C3DD449D2648C665005D2B2A /* MiniPlayerBaseView.swift in Sources */,
@@ -533,6 +547,7 @@
 				C393DCFC2637B1120042B09F /* CameraController.swift in Sources */,
 				C3867838262D3CF500240E52 /* MusicModel.swift in Sources */,
 				C3E80083228A6E830019D195 /* BaseTableview.swift in Sources */,
+				C33A7A07265C9469007FCDEB /* vcTestController.swift in Sources */,
 				C3744A8525636F6D007F66CB /* BaseViewPopup.swift in Sources */,
 				C376342F2632567F0013C881 /* SearchView.swift in Sources */,
 				C3E80087228A6EF10019D195 /* BaseViewNavigator.swift in Sources */,
@@ -543,6 +558,7 @@
 				C390E7AF26410A38004447EB /* Logger.swift in Sources */,
 				C3E80071228A67370019D195 /* Resource.swift in Sources */,
 				C3E8006F228A5B760019D195 /* Dimension.swift in Sources */,
+				C33A7A0A265C958E007FCDEB /* BaseProtocol.swift in Sources */,
 				C3E8008F228A71470019D195 /* TextFieldWithTitle.swift in Sources */,
 				C37D376126367B54009D8151 /* GioHangController.swift in Sources */,
 				C3744A8725637072007F66CB /* ResultResponse.swift in Sources */,
@@ -555,6 +571,7 @@
 				C3DD44992648BF88005D2B2A /* UITabBarBottomController.swift in Sources */,
 				C3A301F02643862700C7CD81 /* LoginViewController.swift in Sources */,
 				C3A301F62643ACE500C7CD81 /* RegisterViewController.swift in Sources */,
+				C33A7A0D265CB0EC007FCDEB /* LoadingOverlay.swift in Sources */,
 				C3E8008D228A70E80019D195 /* TextViewWithTitle.swift in Sources */,
 				C3E80089228A70520019D195 /* BaseMenu.swift in Sources */,
 				C3E8004F228A572D0019D195 /* AppDelegate.swift in Sources */,
