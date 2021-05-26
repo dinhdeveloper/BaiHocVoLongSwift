@@ -127,7 +127,7 @@ class vcBaseControl: UIViewController , BaseProtocol {
     @objc func hidePopupError(_ sender: UIButton) {
         popup_error.removeFromSuperview()
     }
-    lazy private var popup_error: BaseViewPopUp = {
+    lazy public var popup_error: BaseViewPopUp = {
         let popup = BaseViewPopUp()
         popup.btnOK.backgroundColor = Theme.shared.ograneColor
         popup.btnOK.addTarget(self, action: #selector(hidePopupError(_:)), for: .touchUpInside)

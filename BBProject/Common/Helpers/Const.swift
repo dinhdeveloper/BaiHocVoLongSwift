@@ -46,3 +46,8 @@ class Const {
     }
     
 }
+
+/*
+ https://stackoverflow.com/questions/29986957/save-custom-objects-into-nsuserdefaults
+ lưu trữ object vào UserDefault
+ */
