@@ -15,6 +15,7 @@ struct MusicModel {
     var singer: String
     var links: String
     var name: String
+    var checked = false
     
     init(){
         id = ""
@@ -22,6 +23,7 @@ struct MusicModel {
         singer = ""
         links = ""
         name = ""
+        checked = false
     }
     init(object: AnyObject) {
         if let dic: [String: AnyObject] = object as? [String: AnyObject]{
@@ -30,12 +32,14 @@ struct MusicModel {
             singer = dic["singer"] as? String ?? ""
             links = dic["links"] as? String ?? ""
             name = dic["name"] as? String ?? ""
+            checked = false
         }else{
             id = ""
             images = ""
             singer = ""
             links = ""
             name = ""
+            checked = false
         }
     }
 }

@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private var spage = 1
     private var loadmore = true
+    fileprivate let numberOfPlaceHolderCells = 3
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
@@ -32,6 +33,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
        return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
+           return (view.frame.height - tabBarHeight) / CGFloat(numberOfPlaceHolderCells)
+       }
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailController()
         
@@ -48,10 +55,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpTable()
+        //startLoading()
         getListSong()
+        
+    }
+    private func startLoading() {
+        tableview.visibleCells.forEach({
+                $0.contentView.startAnimationLoading()
+            })
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    private func stopLoading() {
+        tableview.visibleCells.forEach({
+                $0.contentView.stopAnimationLoading()
+            })
+        }
+    
+    
+    override func viewWillAppear(_ animated: Bool) { 
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
     }

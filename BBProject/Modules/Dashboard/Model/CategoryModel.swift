@@ -13,19 +13,23 @@ struct CategoryModel {
     var categoryName: String
     var categoryImage: String
     var promotionId: String
+    var category_vn_title: String
     var checkChoose : Bool
+    
     
     init(){
         categoryId = 0
         categoryName = ""
         categoryImage = ""
         promotionId = ""
+        category_vn_title = ""
         checkChoose = false
     }
     init(object: AnyObject) {
         if let dic: [String: AnyObject] = object as? [String: AnyObject]{
             categoryId = dic["categoryId"] as? Int ?? 0
             categoryName = dic["categoryName"] as? String ?? ""
+            category_vn_title = dic["category_vn_title"] as? String ?? ""
             categoryImage = dic["categoryImage"] as? String ?? ""
             promotionId = dic["promotionId"] as? String ?? ""
             checkChoose = false
@@ -35,6 +39,7 @@ struct CategoryModel {
             categoryName = ""
             categoryImage = ""
             promotionId = ""
+            category_vn_title = ""
             checkChoose = false
         }
     }

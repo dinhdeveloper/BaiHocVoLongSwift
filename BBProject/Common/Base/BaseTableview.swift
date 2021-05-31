@@ -19,12 +19,14 @@ class BaseTableView : UITableView, ResuableView{
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     func initialize() {
         self.backgroundColor = UIColor.white
         self.tableFooterView = UIView(frame: CGRect.zero)
     }
     
     
+   
 }
 
 

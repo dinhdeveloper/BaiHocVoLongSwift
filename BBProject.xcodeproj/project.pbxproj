@@ -42,6 +42,12 @@
 		C3A3F8F42633B452008C2C7B /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3F8F32633B452008C2C7B /* TestController.swift */; };
 		C3A3F8F72633C0AA008C2C7B /* ProductDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3F8F62633C0AA008C2C7B /* ProductDetailController.swift */; };
 		C3AA16AA26365F4000BF6CD2 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AA16A926365F3F00BF6CD2 /* TabViewController.swift */; };
+		C3B2F1D3265F27C50044DAC3 /* CellItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2F1D2265F27C50044DAC3 /* CellItemList.swift */; };
+		C3B2F1D6265F2C5E0044DAC3 /* vcListPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2F1D5265F2C5E0044DAC3 /* vcListPopup.swift */; };
+		C3B2F1DD265F371A0044DAC3 /* ViewSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2F1DC265F371A0044DAC3 /* ViewSearch.swift */; };
+		C3B2F2CF265F8AD70044DAC3 /* vcTestTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2F2CE265F8AD70044DAC3 /* vcTestTableView.swift */; };
+		C3B2F2D2265F8F9A0044DAC3 /* AnimationFacebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2F2D1265F8F9A0044DAC3 /* AnimationFacebook.swift */; };
+		C3B2F2D5265F91680044DAC3 /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B2F2D4265F91680044DAC3 /* NewsfeedViewController.swift */; };
 		C3DD44992648BF88005D2B2A /* UITabBarBottomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DD44982648BF88005D2B2A /* UITabBarBottomController.swift */; };
 		C3DD449D2648C665005D2B2A /* MiniPlayerBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DD449C2648C665005D2B2A /* MiniPlayerBaseView.swift */; };
 		C3E8004F228A572D0019D195 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E8004E228A572D0019D195 /* AppDelegate.swift */; };
@@ -108,6 +114,12 @@
 		C3A3F8F32633B452008C2C7B /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		C3A3F8F62633C0AA008C2C7B /* ProductDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailController.swift; sourceTree = "<group>"; };
 		C3AA16A926365F3F00BF6CD2 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		C3B2F1D2265F27C50044DAC3 /* CellItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellItemList.swift; sourceTree = "<group>"; };
+		C3B2F1D5265F2C5E0044DAC3 /* vcListPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcListPopup.swift; sourceTree = "<group>"; };
+		C3B2F1DC265F371A0044DAC3 /* ViewSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSearch.swift; sourceTree = "<group>"; };
+		C3B2F2CE265F8AD70044DAC3 /* vcTestTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vcTestTableView.swift; sourceTree = "<group>"; };
+		C3B2F2D1265F8F9A0044DAC3 /* AnimationFacebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFacebook.swift; sourceTree = "<group>"; };
+		C3B2F2D4265F91680044DAC3 /* NewsfeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
 		C3DD44982648BF88005D2B2A /* UITabBarBottomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarBottomController.swift; sourceTree = "<group>"; };
 		C3DD449C2648C665005D2B2A /* MiniPlayerBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerBaseView.swift; sourceTree = "<group>"; };
 		C3E8004B228A572D0019D195 /* BBProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BBProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +185,12 @@
 				C33A7A03265C8F1F007FCDEB /* vcBaseControl.swift */,
 				C33A7A06265C9468007FCDEB /* vcTestController.swift */,
 				C33A7A09265C958E007FCDEB /* BaseProtocol.swift */,
+				C3B2F1D2265F27C50044DAC3 /* CellItemList.swift */,
+				C3B2F1D5265F2C5E0044DAC3 /* vcListPopup.swift */,
+				C3B2F1DC265F371A0044DAC3 /* ViewSearch.swift */,
+				C3B2F2CE265F8AD70044DAC3 /* vcTestTableView.swift */,
+				C3B2F2D1265F8F9A0044DAC3 /* AnimationFacebook.swift */,
+				C3B2F2D4265F91680044DAC3 /* NewsfeedViewController.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -528,14 +546,17 @@
 				C3E8007D228A6D050019D195 /* PushVC.swift in Sources */,
 				C3E8007F228A6D250019D195 /* BaseView.swift in Sources */,
 				C380B7332644E58900482CD1 /* Const.swift in Sources */,
+				C3B2F2CF265F8AD70044DAC3 /* vcTestTableView.swift in Sources */,
 				C37634572632A4100013C881 /* ProductModel.swift in Sources */,
 				C3E80051228A572D0019D195 /* ViewController.swift in Sources */,
 				C3744A8925637395007F66CB /* PopUpTwoAction.swift in Sources */,
+				C3B2F2D5265F91680044DAC3 /* NewsfeedViewController.swift in Sources */,
 				C376345F2632AF6E0013C881 /* CellColectionViewCateogory.swift in Sources */,
 				C3A3F8F42633B452008C2C7B /* TestController.swift in Sources */,
 				C33A7A04265C8F1F007FCDEB /* vcBaseControl.swift in Sources */,
 				C397FD89263134B1008424AD /* CellMusicColectionView.swift in Sources */,
 				C3E80079228A6C810019D195 /* HandleUI.swift in Sources */,
+				C3B2F1D3265F27C50044DAC3 /* CellItemList.swift in Sources */,
 				C3DD449D2648C665005D2B2A /* MiniPlayerBaseView.swift in Sources */,
 				C3E8007B228A6CED0019D195 /* FormatCurrency.swift in Sources */,
 				C386783F262D690300240E52 /* CellEmpty.swift in Sources */,
@@ -548,6 +569,7 @@
 				C3867838262D3CF500240E52 /* MusicModel.swift in Sources */,
 				C3E80083228A6E830019D195 /* BaseTableview.swift in Sources */,
 				C33A7A07265C9469007FCDEB /* vcTestController.swift in Sources */,
+				C3B2F2D2265F8F9A0044DAC3 /* AnimationFacebook.swift in Sources */,
 				C3744A8525636F6D007F66CB /* BaseViewPopup.swift in Sources */,
 				C376342F2632567F0013C881 /* SearchView.swift in Sources */,
 				C3E80087228A6EF10019D195 /* BaseViewNavigator.swift in Sources */,
@@ -555,6 +577,7 @@
 				C3E80073228A687E0019D195 /* BaseController.swift in Sources */,
 				C3E80057228A572E0019D195 /* BBProject.xcdatamodeld in Sources */,
 				C3E8008B228A70960019D195 /* MenuBar.swift in Sources */,
+				C3B2F1DD265F371A0044DAC3 /* ViewSearch.swift in Sources */,
 				C390E7AF26410A38004447EB /* Logger.swift in Sources */,
 				C3E80071228A67370019D195 /* Resource.swift in Sources */,
 				C3E8006F228A5B760019D195 /* Dimension.swift in Sources */,
@@ -574,6 +597,7 @@
 				C33A7A0D265CB0EC007FCDEB /* LoadingOverlay.swift in Sources */,
 				C3E8008D228A70E80019D195 /* TextViewWithTitle.swift in Sources */,
 				C3E80089228A70520019D195 /* BaseMenu.swift in Sources */,
+				C3B2F1D6265F2C5E0044DAC3 /* vcListPopup.swift in Sources */,
 				C3E8004F228A572D0019D195 /* AppDelegate.swift in Sources */,
 				C3763432263260180013C881 /* CategoryModel.swift in Sources */,
 				C3A3F8F72633C0AA008C2C7B /* ProductDetailController.swift in Sources */,

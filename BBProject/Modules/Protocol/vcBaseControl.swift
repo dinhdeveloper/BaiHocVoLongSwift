@@ -25,7 +25,7 @@ class vcBaseControl: UIViewController , BaseProtocol {
                         self.removeSpinner()
                         #if DEBUG
                             debugPrint("=======================================")
-                            debugPrint(result)
+                            debugPrint(response)
                             debugPrint("=======================================")
                         #endif
                         completionHandler(result)

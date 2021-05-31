@@ -12,7 +12,33 @@ class vcTestController: vcBaseControl {
 
     override func initialize() {
         view.backgroundColor = .white
-        requestApi()
+        setUpBtn()
+    }
+    
+    var btn: UIButton = {
+       let btn = UIButton()
+        btn.setTitle("Chon", for: .normal)
+        btn.backgroundColor = UIColor.gray.withAlphaComponent(0.6)
+        btn.addTarget(self, action: #selector(abtnSelectEmployee(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    func setUpBtn() {
+        view.addSubview(btn)
+        btn.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(50)
+            make.left.equalToSuperview().offset(30)
+            make.right.equalToSuperview().offset(-30)
+            make.height.equalTo(40)
+        }
+    }
+    
+    @objc private func abtnSelectEmployee(_ sender: UIButton){
+        let vc = vcListPopup()
+        vc.modalPresentationStyle = .custom
+        vc.modalTransitionStyle = .crossDissolve
+        vc.view.isOpaque = false
+        present(vc, animated: false, completion: nil)
     }
 
     func requestApi() {

@@ -13,7 +13,6 @@ class Logger{
  static func log(_ logType:LogType,_ message: String){
         switch logType {
         case LogType.error:
-            
             print("\n📕 Error: \(message)\n")
         case LogType.warning:
             print("\n📙 Warning: \(message)\n")
